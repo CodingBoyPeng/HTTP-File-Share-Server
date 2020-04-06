@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+  logging:
+    config: classpath:log4j.xml
+    com.example: trace
+
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+    servlet:
+      path: /api
+
+rsa:
+  privatekey: MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAMXehTb8LJtP6d1Um3/90VpF1d4e3376616EpCkfeHAHWsTMYx/7LvqP74+Am925cqkPa2H+TK/uNo7Yi1VKVqtC8bOb8LRCou1Uk/7mb5SzOF2m0Qyj4kPQI7zqke8E5mye6wmp/a6AePgLLqYF4xhDbrUPoxJ5R6xitZB5XdzZAgMBAAECgYB0gsiyTd7+PRoaJ73AqfZiT4jVWByGKr35U+VOCafjX5FFHIypwkAxbhvDxhkBgDdR8TBr7U++sGgTyNKSkEljV8Oy9fXCOpItg6bdm52XRPiSXlKSDJlu563hQrilVKZdoRK5MC4wZOpmIju5u56+Rc6jTQkh+t7zqiwVXH5/AQJBAP9xCDqpDhZdHmxQOo9XWLqlCHOONG6Mxux4Fyh/Z9Qj0nGC/zDQkPfbPOVX8RuTX3+sySSqb2tibqNkXLlpZckCQQDGTUQAHafXrNuXomxs4rF6qo4+z6AhnyB1ke2xBiYkW11SfLyc0T8ALeQI3O3xssdr/FhX8vpooILTIKVARIaRAkASRrMRB2Fzpiv0EfVuphA6Im6tXeJQepANATae9iamnf2Dk5zQkEufADemLRmaIHw3tVQa5HreUweZdyfPOERJAkEAuvFmVNGgRHPCBJ5rpu7DMAgP12j25htUh2HN+Z/5Xzb+sF/Fk/SzduDMZAqbCstmsweO5UK8DNyc2JqjDwZK8QJBALjPxJoa3Z1gSXUcQYx+T2gjjeJ9odKpDoZqjA/OXf2DmWJksAdpGKVFf5uCMmMCJTiJIooxAHq/66X5MQvgwNU=

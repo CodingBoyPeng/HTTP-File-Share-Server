@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件管理</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        .big {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgb(0, 255, 255), rgb(0, 89, 255), rgb(254, 254, 255));
+        }
+        .boxa {
+            height: 585px;
+            width: 600px;
+            background-color:rgba(0, 0, 0, .5) ;
+            border-radius: 10px ;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+        }
+        h1,hr {
+            color: chartreuse;
+        }
+        .btn {
+            width: 80px;
+            height: 35px;
+            background-color: rgb(0, 132, 255);
+            color: #fff;
+            border-radius: 5px;
+            border: none;
+        }
+        .btna {
+            width: 100px;
+            height: 35px;
+            margin-top: 64px;
+            background-color: rgb(0, 255, 34);
+            color: rgb(33, 43, 87);
+            border-radius: 5px;
+            border: none;
+        }
+        .left {
+            float: left;
+            width: 49%;
+            height: 300px;
+            border-right: #fff solid 3px;
+        }
+        .right {
+            float: left;
+            height: 300px;
+            width: 50%;
+            text-align: left;
+            overflow-x: scroll;
+        }
+        .bottom {
+            float: left;
+            width: 100%;
+            height: 150px;
+            padding-top: 20px;
+            border-top: #fff solid 3px;
+        }
+        p {
+            color: cornsilk;
+            margin-left: 10px;
+            line-height: 18px;
+        }
+        .list {
+            width: 60%;
+            height: 100%;
+            margin-left: 20px;
+            float: left;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+    <div class="big">
+        <div class="boxa">
+            <h1>文件操作</h1>
+            <hr>
+            <div class="left">
+                <br>
+                <br>
+                <br>
+                <br>
+                <button id="upload" class="btn" type="button">选择文件</button>
+                <input id="upload_document" type="file" style="display: none;" accept="application/pdf"/>
+                <br>
+                <br>
+                <span style=" color: #fff;" id="document_name">未选择上传文件</span>
+                <br>
+                <br>
+                <button id="uploadnow" class="btn" type="button">点击上传</button>
+                <br>
+                <br>
+            </div>
+            <div class="right">
+                <h3 style="color: snow;text-align: center;">当前文件元数据</h3>
+                <hr>
+                <p><span>uuid : </span><span id="uuid"></span></p>
+                <p><span>name : </span><span id="name"></span></p>
+                <p><span>type : </span><span id="type"></span></p>
+                <p><span>size : </span><span id="size"></span></p>
+                <p><span>createTime : </span><span id="createTime"></span></p>
+                <p><span>saveAddress : </span><span id="saveAddress"></span></p>
+            </div>
+            <div class="bottom">
+                <div class="list">
+                    <h4 style="color: snow;text-align: center;">最近上传的10个文件：</h4>
+                    <table id="listtable" border="2" cellpadding="8" style="padding:10px 8px;color: snow;">
+                        <tr>
+                            <th>name</th>
+                            <th>type</th>
+                            <th>size</th>
+                            <th>createTime</th>
+                            <th>saveAddress</th>
+                          </tr>
+                    </table>
+                </div>
+                <button id="download" class="btna" type="button">当前文件下载</button>
+            </div> 
+        </div>
+    </div>
+    <script>
+        $("#upload").click(function(){
+            $("#upload_document").click();
+        });
+
+        $("#uploadnow").click(  function () {
+               var fileObj = document.getElementById("upload_document").files[0]; // js 获取文件对象
+               if (typeof (fileObj) == "undefined" || fileObj.size <= 0) {
+                   alert("请选择文件");
+                   return;
+               }
+               var formFile = new FormData();
+               formFile.append("action", "UploadVMKImagePath");  
+               formFile.append("file", fileObj); //加入文件对象
+ 
+               //ajax 提交
+ 
+               var data = formFile;
+               var RandomKey = _getRandomString(6);
+               console.log(data);
+               
+               $.ajax({
+                   url: "localhost:8081/api/file/upload",
+                   file: data,
+                   type: "Post",
+                   dataType: "json",
+                   cache: false,//上传文件无需缓存
+                   processData: false,//用于对data参数进行序列化处理 这里必须false
+                   contentType: false, //必须
+                   headers:{'Content-Type':'multipart/form-data'},
+                   success: function (result) {
+                       $("#uuid").text(result.data.uuid)
+                       $("#name").text(result.data.name)
+                       $("#type").text(result.data.type)
+                       $("#size").text(result.data.size)
+                       $("#createTime").text(result.data.createTime)
+                       $("#saveAddress").text(result.data.saveAddress)
+                       window.localStorage.setItem('secretKey',result.data.secretKey)
+                       window.localStorage.setItem('counertuuid',result.data.uuid)
+                       getlist();
+                   },
+               })
+           });
+        $("#upload_document").change(function(e){
+            var name=e.currentTarget.files[0].name;
+            $("#document_name").html(name);
+        });
+        $("#download").click(function(){
+            var countrentid = window.localStorage.getItem(counertuuid)
+            var url = `localhost:8081/api/file/download?uuid=${countrentid}`
+            window.location.href = url;
+        });
+        getlist();
+        function getlist(){
+            $.ajax({
+                   url: "localhost:8081/api/file/list",
+                   type: "Post",
+                   dataType: "json",
+                   success: function (result) {
+                      for(var i = 1;i<=result.data.length+1;i++){
+                        $("#listtable").append(`<tr>
+                            <td>${result.data.i.name}</td>
+                            <td>${result.data.i.type}</td>
+                            <td>${result.data.i.size}</td>
+                            <td>${result.data.i.createTime}</td>
+                            <td>${result.data.i.saveAddress}</td>
+                          </tr>`);
+                      }
+                   },
+               }) 
+        };
+        function _getRandomString(len) {
+            len = len || 32;
+            var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
+            var maxPos = $chars.length;
+            var pwd = '';
+            for (i = 0; i < len; i++) {
+                pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+            }
+            return pwd;
+        }
+    </script>
+    
+</body>
+</html>
