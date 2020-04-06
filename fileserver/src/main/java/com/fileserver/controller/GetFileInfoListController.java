@@ -26,6 +26,7 @@ public class GetFileInfoListController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        System.out.println("Get File List");
         logger.info("Get File List");
         try {
             Map<Integer, Document> fileMap = fileService.getDocumentList();

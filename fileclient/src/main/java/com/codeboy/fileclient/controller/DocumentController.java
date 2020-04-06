@@ -59,7 +59,7 @@ public class DocumentController {
      * @throws Exception
      */
     @PostMapping(value = "upload")
-    public ResponseEntity<?> uploadDocument(@RequestParam("file") MultipartFile file) throws Exception {
+    public ResponseEntity<?> uploadDocument(@RequestParam("file") MultipartFile file, HttpServletResponse httpServletResponse) throws Exception {
         logger.info("Upload File Client: File Name {}", file.getName());
         // 获得Http客户端
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();

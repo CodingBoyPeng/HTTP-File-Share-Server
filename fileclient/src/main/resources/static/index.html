@@ -54,7 +54,7 @@
             height: 300px;
             width: 50%;
             text-align: left;
-            overflow-x: scroll;
+            overflow-y: scroll;
         }
         .bottom {
             float: left;
@@ -122,7 +122,7 @@
                     </table>
                 </div>
                 <button id="download" class="btna" type="button">当前文件下载</button>
-            </div> 
+            </div>
         </div>
     </div>
     <script>
@@ -137,24 +137,23 @@
                    return;
                }
                var formFile = new FormData();
-               formFile.append("action", "UploadVMKImagePath");  
+               formFile.append("action", "UploadVMKImagePath");
                formFile.append("file", fileObj); //加入文件对象
- 
+
                //ajax 提交
- 
+
                var data = formFile;
-               var RandomKey = _getRandomString(6);
-               console.log(data);
-               
+               // console.log(data);
+
                $.ajax({
-                   url: "localhost:8081/api/file/upload",
-                   file: data,
-                   type: "Post",
-                   dataType: "json",
+                   url: 'http://localhost:8888/api/file/upload',
+                   dataType: 'json',
+                   data: data,
+                   type: 'POST',
                    cache: false,//上传文件无需缓存
                    processData: false,//用于对data参数进行序列化处理 这里必须false
                    contentType: false, //必须
-                   headers:{'Content-Type':'multipart/form-data'},
+                   // headers:{'Content-Type':'multipart/form-data'},
                    success: function (result) {
                        $("#uuid").text(result.data.uuid)
                        $("#name").text(result.data.name)
@@ -173,40 +172,36 @@
             $("#document_name").html(name);
         });
         $("#download").click(function(){
-            var countrentid = window.localStorage.getItem(counertuuid)
-            var url = `localhost:8081/api/file/download?uuid=${countrentid}`
+            var countrentid = window.localStorage.getItem('counertuuid')
+            // console.log(countrentid)
+            var url = `http://localhost:8888/api/file/download?uuid=${countrentid}`
             window.location.href = url;
         });
         getlist();
         function getlist(){
             $.ajax({
-                   url: "localhost:8081/api/file/list",
-                   type: "Post",
+                   url: "http://localhost:8888/api/file/list",
+                   type: "Get",
                    dataType: "json",
                    success: function (result) {
-                      for(var i = 1;i<=result.data.length+1;i++){
+                       // var result = JSON.parse(res)
+                       // console.log(Object.keys(result.data));
+                       // console.log(result.data)
+                       var data = result.data;
+                      for(var i = 1;i<=10;i++){
+                          var datanow = data[i]
                         $("#listtable").append(`<tr>
-                            <td>${result.data.i.name}</td>
-                            <td>${result.data.i.type}</td>
-                            <td>${result.data.i.size}</td>
-                            <td>${result.data.i.createTime}</td>
-                            <td>${result.data.i.saveAddress}</td>
+                            <td>${datanow.name}</td>
+                            <td>${datanow.type}</td>
+                            <td>${datanow.size}</td>
+                            <td>${datanow.createTime}</td>
+                            <td>${datanow.saveAddress}</td>
                           </tr>`);
                       }
                    },
-               }) 
+               })
         };
-        function _getRandomString(len) {
-            len = len || 32;
-            var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
-            var maxPos = $chars.length;
-            var pwd = '';
-            for (i = 0; i < len; i++) {
-                pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-            }
-            return pwd;
-        }
     </script>
-    
+
 </body>
 </html>

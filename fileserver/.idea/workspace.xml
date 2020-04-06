@@ -20,6 +20,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fileserver/tools/encrypt/EncryptFileUtil.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fileserver/controller/DownloadFileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fileserver/controller/DownloadFileController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fileserver/controller/GetFileInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fileserver/controller/GetFileInfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fileserver/controller/GetFileInfoListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fileserver/controller/GetFileInfoListController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/fileserver/controller/UploadFileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fileserver/controller/UploadFileController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/fileserver/tools/encrypt/AESHelper.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/fileserver/tools/encrypt/AESUtil.class" beforeDir="false" />
@@ -164,6 +167,8 @@
       <workItem from="1586144077380" duration="1500000" />
       <workItem from="1586146410470" duration="5125000" />
       <workItem from="1586151856969" duration="37000" />
+      <workItem from="1586155539727" duration="774000" />
+      <workItem from="1586156744762" duration="6824000" />
     </task>
     <servers />
   </component>
@@ -191,26 +196,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1586147716493" />
-    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1586146504333">
+    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1586156904055">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1586146504333" />
-    <state width="1478" height="203" key="GridCell.Tab.0.bottom" timestamp="1586151814485">
+    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1586156904055" />
+    <state width="1493" height="205" key="GridCell.Tab.0.bottom" timestamp="1586172301570">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="203" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586151814485" />
-    <state width="1478" height="203" key="GridCell.Tab.0.center" timestamp="1586151814485">
+    <state width="1493" height="205" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586172301570" />
+    <state width="1493" height="205" key="GridCell.Tab.0.center" timestamp="1586172301570">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="203" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586151814485" />
-    <state width="1478" height="203" key="GridCell.Tab.0.left" timestamp="1586151814485">
+    <state width="1493" height="205" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586172301570" />
+    <state width="1493" height="205" key="GridCell.Tab.0.left" timestamp="1586172301570">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="203" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586151814485" />
-    <state width="1478" height="203" key="GridCell.Tab.0.right" timestamp="1586151814485">
+    <state width="1493" height="205" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586172301570" />
+    <state width="1493" height="205" key="GridCell.Tab.0.right" timestamp="1586172301570">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="203" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586151814485" />
+    <state width="1493" height="205" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586172301570" />
     <state width="1478" height="360" key="GridCell.Tab.1.bottom" timestamp="1586145807760">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -231,18 +236,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="299" y="67" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1586059774652" />
-    <state x="408" y="110" key="NewModule_or_Project.wizard" timestamp="1586146506662">
+    <state x="408" y="110" key="NewModule_or_Project.wizard" timestamp="1586156907179">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="408" y="110" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1586146506662" />
+    <state x="408" y="110" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1586156907179" />
     <state x="270" y="0" key="SettingsEditor" timestamp="1586060362095">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586060362095" />
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1586146476795">
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1586156864366">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586146476795" />
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586156864366" />
     <state x="315" y="148" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1586081176695">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
