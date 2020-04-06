@@ -36,7 +36,7 @@
 
 **AES**：AES加密算法采用分组密码体制，每个分组数据的长度为128位16个字节，密钥长度可以是128位16个字节、192位或256位，一共有四种加密模式，我们通常采用需要初始向量IV的CBC模式，初始向量的长度也是128位16个字节。其加解密流程如下图：
 
-![image-20200331234422488](readme.assets/image-20200331234422488.png)
+![image-20200331234422488](README.assets/image-20200331234422488.png)
 
 #### 3.1.2 非对称加密
 
@@ -74,7 +74,7 @@ Connetction conn = DriverManager.getConnection("jdbc:derby:D:\\summer;create=tru
 
 ​	网络模式，Derby数据库独占一个JVM，做为服务器上的一个独立进程运行。在这种模式下，允许有多个应用程序来访问同一个Derby数据库，通过本地IP加默认端口1527(默认端口)进行访问。													      首先我们应运行derby包的lib下的startNetWorkServer开启Derby服务器。效果如下图所示：
 
-![image-20200401151212616](readme.assets/image-20200401151212616.png)
+![image-20200401151212616](README.assets/image-20200401151212616.png)
 
 ![image-20200401151310875](readme.assets/image-20200401151310875.png)
 
@@ -114,7 +114,7 @@ SELECT * FROM APP.FILE ORDER BY FILE.CREATE_TIME DESC
 
 3.使用`MultipartFile`的`transferTo`方法自动加上默认路径问题，导致找不到对应的盘符或文件。效果如下图所示:
 
-![image-20200401233816069](readme.assets/image-20200401233816069.png)
+![image-20200401233816069](README.assets/image-20200401233816069.png)
 
 解决方案：添加`commons io`包，调用` FileUtils.copyInputStreamToFile(file.getInputStream(), tempFile)`将目标文件通过输入流传给目标文件。
 
