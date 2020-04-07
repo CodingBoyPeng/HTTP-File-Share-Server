@@ -26,6 +26,21 @@ public class FileService {
     private static final String url = "jdbc:derby:file;create=true";
 
     /**
+     * 加载数据库驱动
+     */
+    static {
+        try {
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 保存文件上传信息
      * @param file      上传文件
      * @param time      上传时间
